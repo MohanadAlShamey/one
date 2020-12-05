@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+*{
+  font-family: 'Cairo', sans-serif ;
+  margin: 0;
+  padding: 0;
+  text-decoration: none  !important;
+}
+a.hover{
+  text-decoration: none !important;
+}
+@import "~bootstrap";
+//@import "~admin3-rtl/plugins/font-awesome/css/font-awesome.min.css";
+.group{
+  background-position: center;
+
+}
+.container-logo{
+  background: transparent !important;
+  width: 100%;
+  direction: rtl;
+  text-align: left;
+  a{
+    img{
+      height: 65px;
+      width: auto;
+
+    }
+  }
+}
+.text-center{
+  text-align: center;
+}
+.box-center{
+  margin: auto;
+}
+.responsive-iframe{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 66.66%;
+  margin: auto;
+  iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.my-5{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.thumb{
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 1px 5px 8px #00000088;
+  width: 60%;
+  @media screen and (max-width: 800px){
+    width: 80%!important;
+  }
+}
+.shadow-box{
+  box-shadow: 1px 5px 8px #00000088;
+}
+.btn-cta{
+  background: red;
+  padding: 15px 8px;
+ border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  //display: inline-block;
+  color:#000;
+  font-weight: bolder;
+  font-size: 16px;
+  &:hover{
+    color:#fff;
+  }
+}
+.app{
+  background-color:#c8c8c8;
+  @media  screen and (max-width: 448px){
+    background: transparent;
+  }
+}
+
+*{
+  line-height: 1.8 !important;
+  @media screen and (max-width: 448px){
+    line-height: 1.5 !important;
+  }
+}
+.text-white{
+  color:white;
+}
+/*.container{
+  width: 85%;
+  margin: auto;
+  !*@media screen and (min-width: 94% ){
+
+  }*!
+}*/
+.d-flex{
+  display: flex;
+}
+.flex-row{
+  justify-content: space-between;
+  display: table-row;
+}
+.border-dashed{
+  border:2px dashed #ccc;
+  padding: 15px 8px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.bg-dark{
+  color: #fff;
+  padding: 5px;
+  
+}
+.w-5{
+  width: 10%!important;
+  @media screen and (max-width: 800px){
+    width: 15%!important;
+  }
+  @media screen and (max-width: 500px){
+  width: 20%!important;
+}
+}
+.radius{
+  -webkit-border-radius: 8px !important;
+  -moz-border-radius: 8px !important;
+  border-radius: 8px !important;
+}

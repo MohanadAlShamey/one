@@ -1,0 +1,50 @@
+// Fonts
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+/*@import '~bootstrap/scss/bootstrap';*/
+
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~admin3-rtl/dist/css/adminlte.min.css";
+@import "~admin3-rtl/dist/css/custom-style.css";
+@import "~admin3-rtl/dist/css/bootstrap-rtl.min.css";
+//@import "~vue-datetime/dist/vue-datetime.min.css";
+
+body.swal2-toast-shown .swal2-container.swal2-top-end, body.swal2-toast-shown .swal2-container.swal2-top-right{
+  z-index:12000 !important;
+}
+
+.title{
+  display: inline-block;
+  padding: 15px 10px;
+  border-bottom: 2px solid $orange;
+  @media screen  and (max-width: 580px){
+    line-height: 1.5;
+  }
+}
+span.text-danger{
+  @media screen  and (max-width: 580px){
+    line-height: 1.5;
+    padding-top: 10px;
+  }
+}
+th,td{
+  @media screen  and (max-width: 580px){
+    line-height: 1.5;
+  }
+}
+
+.custom-text {
+  font-weight: bold;
+  font-size: 0.9em;
+  border: 1px solid #cfcfcf;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  color: #999;
+  background: #fff;
+  letter-spacing: 2px;
+}
