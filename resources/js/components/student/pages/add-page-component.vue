@@ -2,42 +2,35 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form @submit.prevent="save" @keydown="form.onKeydown($event)">
-                <div class="card group1">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between">
-                            <span>المجموعة الأولى</span>
-                            <a :href="`${url}/student/pages`"><i class="fa fa-backward"></i></a>
-                        </div>
-                    </div>
+                <div class="card">
                     <div class="card-body">
-
                         <div class="form-group">
                             <label>عنوان الصفحة</label>
                             <input v-model="form.name" type="text" name="name"
                                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                             <has-error :form="form" field="name"></has-error>
                         </div>
+                    </div>
+                </div>
+                <div class="card group1">
+                    <div class="card-header">
 
+                        <div class="d-flex justify-content-start">
+                            <div class="form-check-inline mx-2">
+                                <input class="form-check-input" type="checkbox"  v-model="form.group1.active" :value="true" >
+                            </div>
+                            <span>المجموعة الأولى</span>
+                           <!-- <a :href="`${url}/student/pages`"><i class="fa fa-backward"></i></a>-->
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <!--<div class="form-group">
                             <label>لوغو</label>
                             <input @change="changeImg($event,'logo')" type="file"
                                    class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }">
                             <span class="text-danger small" v-if="form.errors.has('img_video')">{{form.errors.get('img_video')}}</span>
                         </div>-->
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group1.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group1.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <label>هيد لاين</label>
                             <input type="text" v-model="form.group1.title" class="form-control">
@@ -101,7 +94,7 @@
                                 <input class="form-check-input" type="radio" v-model="group1_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                    تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -123,10 +116,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group1_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group1.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group1_bg=='css'">
+                           <div class="col-6">
+                               <label>الخلفية/تدرج لوني</label>
+                               <select v-model="form.group1.css" name="" id="" class="form-control">
+                                   <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                               </select>
+                           </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group1.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
 <!--End BackGround-->
@@ -136,22 +136,15 @@
 
 
                 <div class="card group2">
-                    <div class="card-header">المجموعة الثانية</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group2.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group2.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group2.active" :value="true" >
+
                         </div>
+                        <span> المجموعة الثانية</span>
+                       </div>
+                    <div class="card-body">
+
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group2.title" class="form-control">
@@ -195,7 +188,7 @@
                                 <input class="form-check-input" type="radio" v-model="group2_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -217,10 +210,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group2_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group2.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group2_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group2.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group2.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -229,22 +229,14 @@
 
 
                 <div class="card group3">
-                    <div class="card-header">المجموعة الثالثة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group3.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group3.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group3.active" :value="true" >
                         </div>
+                    <span> المجموعة الثالثة</span>
+                    </div>
+                    <div class="card-body">
+
                        <div class="form-group">
                            <label >المشاكل</label>
                            <input type="text" class="form-control my-1" v-for="(item,index) in form.group3.problems.length" v-model="form.group3.problems[index]">
@@ -285,7 +277,7 @@
                                 <input class="form-check-input" type="radio" v-model="group3_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -307,10 +299,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group3_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group3.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group3_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group3.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group3.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -321,22 +320,17 @@
 
 
                 <div class="card group4">
-                    <div class="card-header">المجموعة الرابعة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group4.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group4.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group4.active" :value="true" >
+
                         </div>
+                       <span> المجموعة الرابعة</span>
+
+
+                    </div>
+                    <div class="card-body">
+
                         <div class="form-group">
                             <label >الحلول</label>
                             <input type="text" class="form-control my-1" v-for="(item,index) in form.group4.solutions.length" v-model="form.group4.solutions[index]">
@@ -384,7 +378,7 @@
                                 <input class="form-check-input" type="radio" v-model="group4_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -406,32 +400,34 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group4_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group4.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group4_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group4.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group4.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
                     </div>
                 </div>
+
+
                 <div class="card group5">
-                    <div class="card-header">المموعة الخامسة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group5.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group5.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group5.active" :value="true" >
+
                         </div>
+                    <span>المموعة الخامسة</span>
+                    </div>
+                    <div class="card-body">
+
                        <!-- <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group5.title" class="form-control">
@@ -470,7 +466,7 @@
                                 <input class="form-check-input" type="radio" v-model="group5_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -492,10 +488,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group5_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group5.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group5_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group5.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group5.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -504,22 +507,15 @@
 
 
                 <div class="card group6">
-                    <div class="card-header">المجموعة السادسة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group6.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group6.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group6.active" :value="true" >
+
                         </div>
+                    <span>المجموعة السادسة</span>
+                    </div>
+                    <div class="card-body">
+
                         <!--<div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group6.title" class="form-control">
@@ -562,7 +558,7 @@
                                 <input class="form-check-input" type="radio" v-model="group6_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -584,10 +580,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group6_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group6.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group6_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group6.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group6.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -596,22 +599,14 @@
 
 
                 <div class="card group7">
-                    <div class="card-header">المجموعة السابعة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group7.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group7.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group7.active" :value="true" >
                         </div>
+                    <span> المجموعة السابعة</span>
+                    </div>
+                    <div class="card-body">
+
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group7.title" class="form-control">
@@ -644,7 +639,7 @@
                                 <input class="form-check-input" type="radio" v-model="group7_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -666,10 +661,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group7_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group7.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group7_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group7.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group7.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -678,22 +680,15 @@
 
 
                 <div class="card group8">
-                    <div class="card-header">المجموعة الثامنة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group8.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group8.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group8.active" :value="true" >
+
                         </div>
+                        <span>المجموعة الثامنة</span>
+                    </div>
+                    <div class="card-body">
+
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group8.title" class="form-control">
@@ -742,7 +737,7 @@
                                 <input class="form-check-input" type="radio" v-model="group8_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -764,10 +759,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group8_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group8.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group8_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group8.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group8.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -776,22 +778,15 @@
 
 
                 <div class="card group9">
-                    <div class="card-header">المجموعة التاسعة</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio"  v-model="form.group9.active" :value="true" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    تفعيل المجموعة
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" v-model="form.group9.active"  :value="false" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    إيقاف المجموعة
-                                </label>
-                            </div>
+                    <div class="card-header">
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox"  v-model="form.group9.active" :value="true" >
+
                         </div>
+                    <span>المجموعة التاسعة</span>
+                    </div>
+                    <div class="card-body">
+
                        <!-- <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group9.title" class="form-control">
@@ -833,7 +828,7 @@
                                 <input class="form-check-input" type="radio" v-model="group9_bg"
                                        value="css">
                                 <label class="form-check-label" for="exampleRadios2">
-                                    كود css
+                                   تدرج لوني
                                 </label>
                             </div>
                         </div>
@@ -855,10 +850,17 @@
                                 <option value="repeat">تكرار</option>
                             </select>
                         </div>
-                        <div class="form-group" v-else-if="group9_bg=='css'">
-                            <label>الخلفية/مخصص</label>
-                            <textarea v-model="form.group9.css"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }"></textarea>
+                        <div class="form-row" v-else-if="group9_bg=='css'">
+                            <div class="col-6">
+                                <label>الخلفية/تدرج لوني</label>
+                                <select v-model="form.group9.css" name=""  class="form-control">
+                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div style="min-height: 150px" class="w-100" :style="form.group9.css"></div>
+                            </div>
+
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
                         </div>
                         <!--End BackGround-->
@@ -935,6 +937,26 @@
         },
         data() {
             return {
+                bg_css:[
+                    {name:'تدرج ',value:`background-image: radial-gradient(circle at center center, rgba(33,33,33,0),rgb(33,33,33)),repeating-linear-gradient(135deg, rgb(33,33,33) 0px, rgb(33,33,33) 1px,transparent 1px, transparent 4px),repeating-linear-gradient(45deg, rgb(56,56,56) 0px, rgb(56,56,56) 5px,transparent 5px, transparent 6px),linear-gradient(90deg, rgb(33,33,33),rgb(33,33,33));`,},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(45deg, rgba(97,97,97,0.1) 0px, rgba(97,97,97,0.1) 2px,transparent 2px, transparent 4px),linear-gradient(90deg, rgb(43,43,43),rgb(43,43,43)`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(67.5deg, hsla(145,0%,97%,0.2) 0px, hsla(145,0%,97%,0.2) 0px,transparent 0px, transparent 1px,hsla(145,0%,97%,0.2) 1px, hsla(145,0%,97%,0.2) 4px,transparent 4px, transparent 5px,hsla(145,0%,97%,0.2) 5px, hsla(145,0%,97%,0.2) 8px),repeating-linear-gradient(0deg, hsla(145,0%,97%,0.2) 0px, hsla(145,0%,97%,0.2) 0px,transparent 0px, transparent 1px,hsla(145,0%,97%,0.2) 1px, hsla(145,0%,97%,0.2) 4px,transparent 4px, transparent 5px,hsla(145,0%,97%,0.2) 5px, hsla(145,0%,97%,0.2) 8px),linear-gradient(135deg, rgb(237, 237, 237),rgb(199, 199, 199));`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(22.5deg, hsla(337,0%,64%,0.2) 0px, hsla(337,0%,64%,0.2) 0px,transparent 0px, transparent 1px,hsla(337,0%,64%,0.2) 1px, hsla(337,0%,64%,0.2) 4px,transparent 4px, transparent 5px,hsla(337,0%,64%,0.2) 5px, hsla(337,0%,64%,0.2) 8px),repeating-linear-gradient(157.5deg, hsla(337,0%,64%,0.2) 0px, hsla(337,0%,64%,0.2) 0px,transparent 0px, transparent 1px,hsla(337,0%,64%,0.2) 1px, hsla(337,0%,64%,0.2) 4px,transparent 4px, transparent 5px,hsla(337,0%,64%,0.2) 5px, hsla(337,0%,64%,0.2) 8px),linear-gradient(135deg, rgb(168, 168, 168),rgb(60, 60, 60));`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(297deg, hsla(359,0%,70%,0.12) 0px,transparent 2px,hsla(359,0%,70%,0.12) 7px,transparent 9px,hsla(359,0%,70%,0.12) 14px,transparent 16px,hsla(359,0%,70%,0.12) 21px),repeating-linear-gradient(59deg, hsla(359,0%,70%,0.12) 0px,transparent 2px,hsla(359,0%,70%,0.12) 7px,transparent 9px,hsla(359,0%,70%,0.12) 14px,transparent 16px,hsla(359,0%,70%,0.12) 21px),repeating-linear-gradient(0deg, hsla(359,0%,70%,0.12) 0px,transparent 2px,hsla(359,0%,70%,0.12) 7px,transparent 9px,hsla(359,0%,70%,0.12) 14px,transparent 16px,hsla(359,0%,70%,0.12) 21px),linear-gradient(90deg, rgb(253,253,253),rgb(253,253,253));`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(140deg, hsla(295,0%,82%,0.12) 0px,transparent 2px,hsla(295,0%,82%,0.12) 7px,transparent 9px,hsla(295,0%,82%,0.12) 14px),repeating-linear-gradient(38deg, hsla(295,0%,82%,0.12) 0px,transparent 2px,hsla(295,0%,82%,0.12) 7px,transparent 9px,hsla(295,0%,82%,0.12) 14px),repeating-linear-gradient(0deg, hsla(295,0%,82%,0.15) 0px, hsla(295,0%,82%,0.15) 0px,transparent 0px, transparent 1px,hsla(295,0%,82%,0.15) 1px, hsla(295,0%,82%,0.15) 4px,transparent 4px, transparent 5px,hsla(295,0%,82%,0.15) 5px, hsla(295,0%,82%,0.15) 8px),repeating-linear-gradient(90deg, hsla(295,0%,82%,0.15) 0px, hsla(295,0%,82%,0.15) 0px,transparent 0px, transparent 1px,hsla(295,0%,82%,0.15) 1px, hsla(295,0%,82%,0.15) 4px,transparent 4px, transparent 5px,hsla(295,0%,82%,0.15) 5px, hsla(295,0%,82%,0.15) 8px),linear-gradient(90deg, rgb(58,58,58),rgb(58,58,58));`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(148deg, hsla(54,0%,87%,0.12) 0px, hsla(54,0%,87%,0.12) 1px,transparent 1px, transparent 4px,hsla(54,0%,87%,0.12) 4px, hsla(54,0%,87%,0.12) 5px,transparent 5px, transparent 7px,hsla(54,0%,87%,0.12) 7px, hsla(54,0%,87%,0.12) 8px),repeating-linear-gradient(119deg, hsla(54,0%,87%,0.12) 0px, hsla(54,0%,87%,0.12) 1px,transparent 1px, transparent 4px,hsla(54,0%,87%,0.12) 4px, hsla(54,0%,87%,0.12) 5px,transparent 5px, transparent 7px,hsla(54,0%,87%,0.12) 7px, hsla(54,0%,87%,0.12) 8px),repeating-linear-gradient(0deg, hsla(54,0%,87%,0.15) 0px, hsla(54,0%,87%,0.15) 0px,transparent 0px, transparent 1px,hsla(54,0%,87%,0.15) 1px, hsla(54,0%,87%,0.15) 4px,transparent 4px, transparent 5px,hsla(54,0%,87%,0.15) 5px, hsla(54,0%,87%,0.15) 8px),repeating-linear-gradient(90deg, hsla(54,0%,87%,0.15) 0px, hsla(54,0%,87%,0.15) 0px,transparent 0px, transparent 1px,hsla(54,0%,87%,0.15) 1px, hsla(54,0%,87%,0.15) 4px,transparent 4px, transparent 5px,hsla(54,0%,87%,0.15) 5px, hsla(54,0%,87%,0.15) 8px),linear-gradient(90deg, rgb(251,251,251),rgb(251,251,251));`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(188deg, hsla(171,0%,87%,0.12) 0px, hsla(171,0%,87%,0.12) 2px,transparent 2px, transparent 5px,hsla(171,0%,87%,0.12) 5px, hsla(171,0%,87%,0.12) 7px,transparent 7px, transparent 9px,hsla(171,0%,87%,0.12) 9px, hsla(171,0%,87%,0.12) 11px),repeating-linear-gradient(162deg, hsla(171,0%,87%,0.12) 0px, hsla(171,0%,87%,0.12) 2px,transparent 2px, transparent 5px,hsla(171,0%,87%,0.12) 5px, hsla(171,0%,87%,0.12) 7px,transparent 7px, transparent 14px,hsla(171,0%,87%,0.12) 14px, hsla(171,0%,87%,0.12) 16px),repeating-linear-gradient(0deg, hsla(171,0%,87%,0.15) 0px, hsla(171,0%,87%,0.15) 0px,transparent 0px, transparent 1px,hsla(171,0%,87%,0.15) 1px, hsla(171,0%,87%,0.15) 4px,transparent 4px, transparent 5px,hsla(171,0%,87%,0.15) 5px, hsla(171,0%,87%,0.15) 8px),repeating-linear-gradient(90deg, hsla(171,0%,87%,0.15) 0px, hsla(171,0%,87%,0.15) 0px,transparent 0px, transparent 1px,hsla(171,0%,87%,0.15) 1px, hsla(171,0%,87%,0.15) 4px,transparent 4px, transparent 5px,hsla(171,0%,87%,0.15) 5px, hsla(171,0%,87%,0.15) 8px),linear-gradient(90deg, rgb(251,251,251),rgb(251,251,251));`},
+                    {name:'تدرج ',value:`background-image: repeating-linear-gradient(135deg, hsla(190,0%,89%,0.15) 0px, hsla(190,0%,89%,0.15) 0px,transparent 0px, transparent 1px,hsla(190,0%,89%,0.15) 1px, hsla(190,0%,89%,0.15) 4px,transparent 4px, transparent 5px,hsla(190,0%,89%,0.15) 5px, hsla(190,0%,89%,0.15) 10px),repeating-linear-gradient(45deg, hsla(190,0%,89%,0.15) 0px, hsla(190,0%,89%,0.15) 0px,transparent 0px, transparent 1px,hsla(190,0%,89%,0.15) 1px, hsla(190,0%,89%,0.15) 4px,transparent 4px, transparent 5px,hsla(190,0%,89%,0.15) 5px, hsla(190,0%,89%,0.15) 10px),repeating-linear-gradient(0deg, hsla(190,0%,89%,0.15) 0px, hsla(190,0%,89%,0.15) 0px,transparent 0px, transparent 1px,hsla(190,0%,89%,0.15) 1px, hsla(190,0%,89%,0.15) 4px,transparent 4px, transparent 5px,hsla(190,0%,89%,0.15) 5px, hsla(190,0%,89%,0.15) 10px),repeating-linear-gradient(90deg, hsla(190,0%,89%,0.15) 0px, hsla(190,0%,89%,0.15) 0px,transparent 0px, transparent 1px,hsla(190,0%,89%,0.15) 1px, hsla(190,0%,89%,0.15) 4px,transparent 4px, transparent 5px,hsla(190,0%,89%,0.15) 5px, hsla(190,0%,89%,0.15) 10px),linear-gradient(90deg, rgb(251,251,251),rgb(251,251,251));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(0deg, rgb(249, 66, 6),rgb(250, 134, 22),rgb(251, 202, 37));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(135deg, rgba(238, 238, 238, 0.1),rgba(16, 16, 16, 0.1)),linear-gradient(183deg, rgb(202, 255, 50),rgb(223, 14, 20));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(37deg, rgb(32, 218, 233),rgb(40, 21, 236));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(3deg, rgb(249, 144, 110),rgb(225, 14, 225));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(90deg, rgb(62, 25, 113),rgb(72, 105, 206));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(145deg, rgba(232, 87, 237, 0.15) 0%,rgba(109, 137, 69, 0.15) 100%),linear-gradient(75deg, rgb(33, 138, 184),rgb(0, 241, 181));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(0deg, rgba(26, 228, 244, 0.15) 0%,rgba(50, 206, 35, 0.15) 100%),linear-gradient(90deg, rgb(44, 56, 250),rgb(88, 219, 228));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(0deg, rgba(99, 109, 81, 0.3) 0%,rgba(198, 203, 94, 0.3) 100%),linear-gradient(90deg, rgb(18, 116, 125),rgb(20, 216, 80));`},
+                    {name:'تدرج ',value:`background-image: linear-gradient(90deg, rgb(119, 14, 191),rgb(238, 141, 125));`},
+                ],
                 img_video_type: 'img',
                 group1_bg: 'color',
                 group2_bg: 'color',
@@ -973,7 +995,10 @@
             },
             save() {
                 this.form.post(`${url}/student/pages/store`).then(() => {
-                    Swal.fire('success', 'Done');
+                    Toast.fire({icon:'success', title:'Done'});
+                    setTimeout(()=>{
+                        window.location.assign(`${url}/student/pages`);
+                    },2000);
                 })
             },
             changeImg(el, name) {

@@ -23,9 +23,9 @@
                             <tr v-for="page in pages">
                                 <td>{{page.name}}</td>
                                 <td>{{page.user.name}}</td>
-                                <td><a :href="`${url}/page/${page.name}`">زيارة</a></td>
+                                <td><a :href="`${url}/page/${page.name}`"  target="_blank">زيارة</a></td>
                                 <td>
-                                    <a :href="`${url}/student/pages/${page.id}/edit`" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                    <a :href="`${url}/student/pages/${page.id}/edit`"  class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                                     <button type="button" @click="deletePages(page.id)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>

@@ -90,40 +90,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             @if(auth()->user()->hasOption('landingpage'))
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-
-
-                        <span >صفحات الهبوط <i class="fa fa-angle-down"></i></span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('dashboard.pages')}}">
+                      صفحات الهبوط
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-                        <a href="{{route('dashboard.pages.create')}}" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        إنشاء صفحة جديدة
-                                        <span class="float-left text-sm text-muted"><i class="fa fa-star"></i></span>
-                                    </h3>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <a href="{{route('dashboard.pages')}}" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        صفحاتي
-                                        <span class="float-left text-sm text-muted"><i class="fa fa-star"></i></span>
-                                    </h3>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
 
-
-                    </div>
                 </li>
             @endif
         {{-- @include('admin.layouts.ul')--}}
