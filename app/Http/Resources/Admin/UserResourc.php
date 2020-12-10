@@ -30,6 +30,7 @@ class UserResourc extends JsonResource
             'created_at'=>date('Y-m-d',strtotime($this->created_at)),
             'password'=>'',
             'reg_at'=>$this->reg_at,
+            'site'=>$this->site,
             'optionIds'=>$this->optionIds,
             'example'=>ExampleUser::where([
                 'user_id'=>$this->id,

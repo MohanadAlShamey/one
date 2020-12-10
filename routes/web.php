@@ -30,3 +30,6 @@ Route::get('/test',function(){
     \App\Helpers\Helper2::is_date_active_of_lesson(\App\Lesson::find(70));
 });
 Route::get('/page/{page:name}', [\App\Http\Controllers\Site\PageController::class,'index'])->name('show_page');
+Route::get('/homePage/{page:name}',[\App\Http\Controllers\Site\PageController::class,'home'])->name('home_page.show');
+Route::get('/homePage/{page:name}/policy',[\App\Http\Controllers\Site\PageController::class,'policy'])->name('home_page.policy');
+Route::get('/homePage/{page:name}/terms',[\App\Http\Controllers\Site\PageController::class,'terams'])->name('home_page.terams');

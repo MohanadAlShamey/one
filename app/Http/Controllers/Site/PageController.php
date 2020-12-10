@@ -17,4 +17,27 @@ class PageController extends Controller
 
         return view('site.layouts.theme1.layouts',compact('page','count'));
     }
+    public function home(Page $page){
+        if($page->type!='homepage'){
+            return redirect(404);
+        }
+        return view('site.home.page',compact('page'));
+    }
+
+    public function policy(Page $page){
+        if($page->type!='homepage'){
+            return redirect(404);
+        }
+        $type='policy';
+        return view('site.home.privacy',compact('page','type'));
+    }
+
+    public function terams(Page $page){
+       // return $page;
+        if($page->type!='homepage'){
+            return redirect(404);
+        }
+        $type='terams';
+        return view('site.home.privacy',compact('page','type'));
+    }
 }

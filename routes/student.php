@@ -100,3 +100,11 @@ Route::post('/pages/store',[\App\Http\Controllers\Student\PageController::class,
 Route::get('/pages/{page}/edit',[\App\Http\Controllers\Student\PageController::class,'edit'])->name('dashboard.pages.edit');
 Route::post('/pages/{page}/update',[\App\Http\Controllers\Student\PageController::class,'update'])->name('dashboard.pages.update');
 Route::delete('/pages/{page}/delete',[\App\Http\Controllers\Student\PageController::class,'delete'])->name('dashboard.pages.delete');
+
+
+Route::get('/pages/homePage',[\App\Http\Controllers\Student\HomePageController::class,'index'])->name('dashboard.pages.home_page');
+Route::get('/pages/homePage/create',[\App\Http\Controllers\Student\HomePageController::class,'create'])->name('dashboard.pages.home_page.create');
+Route::post('/pages/homePage/store',[\App\Http\Controllers\Student\HomePageController::class,'store'])->name('dashboard.pages.home_page.store');
+Route::get('/pages/homePage/getAllPage',[\App\Http\Controllers\Student\HomePageController::class,'getAllPage'])->name('dashboard.pages.home_page.getAllPage');
+Route::get('/pages/homePage/{page}/edit',[\App\Http\Controllers\Student\HomePageController::class,'edit'])->name('dashboard.pages.home_page.edit');
+Route::post('/pages/homePage/{page}/update',[\App\Http\Controllers\Student\HomePageController::class,'update'])->name('dashboard.pages.home_page.update');

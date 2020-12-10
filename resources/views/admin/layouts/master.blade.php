@@ -97,6 +97,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 </li>
             @endif
+
+            @if(auth()->user()->hasOption('homepage'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('dashboard.pages.home_page')}}">
+                      الصفحات الرئيسية
+                    </a>
+
+                </li>
+            @endif
         {{-- @include('admin.layouts.ul')--}}
             {{--  <li class="nav-item d-none d-sm-inline-block">
                   <a href="index3.html" class="nav-link">خانه</a>

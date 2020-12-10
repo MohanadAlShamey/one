@@ -123,6 +123,8 @@ Vue.component('add-page-component', require('./components/student/pages/add-page
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+require('./component.js');
+
 Vue.filter('getStatus',(v)=>{
     if(v==1){
         return 'مفعل';

@@ -26,7 +26,8 @@ class PageController extends Controller
     public function getAllPage(Request $request)
     {
         $q = $request->q;
-        return auth()->user()->pages()->where(function ($query) use ($q) {
+        return auth()->user()->pages()->where('type','landing')->where(function ($query) use ($q) {
+
             $query->where('name', 'like', "%$q%");
             $query->orWhereHas('user', function ($query) use ($q) {
                 $query->where('name', 'like', "%$q%");
@@ -115,23 +116,7 @@ class PageController extends Controller
 
     }
 
-    private function ImageUpload($string, $width = null)
-    {
-        if ($string != null && Str::contains($string, 'base64')) {
-            if ($width == null) {
-                $width = Image::make($string)->getWidth();
-            }
-            $ex = explode('/', explode(';', $string)[0])[1];
-            // dd($ex);
-            $name = 'images/upload/' . uniqid() . '.' . $ex;
-            Image::make($string)->resize($width, null, function ($r) {
-                $r->aspectRatio();
-            })/*->encode('webp', 100)*/
-            ->save(storage_path('app/public/' . $name));
-            return $name;
-        }
-        return $string;
-    }
+
 
     public function edit(Page $page)
     {
