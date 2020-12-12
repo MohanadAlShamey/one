@@ -119,12 +119,12 @@
                         <div class="form-row" v-else-if="group1_bg=='css'">
                            <div class="col-6">
                                <label>الخلفية/تدرج لوني</label>
-                               <select v-model="form.group1.css" name="" id="" class="form-control">
+                               <select v-model="form.group1.bg" name="" id="" class="form-control">
                                    <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                </select>
                            </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group1.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group1.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -213,12 +213,12 @@
                         <div class="form-row" v-else-if="group2_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group2.css" name=""  class="form-control">
+                                <select v-model="form.group2.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group2.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group2.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -302,12 +302,12 @@
                         <div class="form-row" v-else-if="group3_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group3.css" name=""  class="form-control">
+                                <select v-model="form.group3.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group3.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group3.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -403,12 +403,12 @@
                         <div class="form-row" v-else-if="group4_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group4.css" name=""  class="form-control">
+                                <select v-model="form.group4.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group4.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group4.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -491,12 +491,12 @@
                         <div class="form-row" v-else-if="group5_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group5.css" name=""  class="form-control">
+                                <select v-model="form.group5.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group5.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group5.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -583,12 +583,12 @@
                         <div class="form-row" v-else-if="group6_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group6.css" name=""  class="form-control">
+                                <select v-model="form.group6.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group6.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group6.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -664,12 +664,12 @@
                         <div class="form-row" v-else-if="group7_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group7.css" name=""  class="form-control">
+                                <select v-model="form.group7.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group7.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group7.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -762,12 +762,12 @@
                         <div class="form-row" v-else-if="group8_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group8.css" name=""  class="form-control">
+                                <select v-model="form.group8.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group8.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group8.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -853,12 +853,12 @@
                         <div class="form-row" v-else-if="group9_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group9.css" name=""  class="form-control">
+                                <select v-model="form.group9.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group9.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group9.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->

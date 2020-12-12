@@ -33,3 +33,5 @@ Route::get('/page/{page:name}', [\App\Http\Controllers\Site\PageController::clas
 Route::get('/homePage/{page:name}',[\App\Http\Controllers\Site\PageController::class,'home'])->name('home_page.show');
 Route::get('/homePage/{page:name}/policy',[\App\Http\Controllers\Site\PageController::class,'policy'])->name('home_page.policy');
 Route::get('/homePage/{page:name}/terms',[\App\Http\Controllers\Site\PageController::class,'terams'])->name('home_page.terams');
+Route::get('/homePage/{page:name}/contact',[\App\Http\Controllers\Site\PageController::class,'contact'])->name('home_page.contact');
+Route::post('/homePage/{page:name}/contact',[\App\Http\Controllers\Site\PageController::class,'storeContact'])->name('home_page.contact.store');

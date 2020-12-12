@@ -108,3 +108,7 @@ Route::post('/pages/homePage/store',[\App\Http\Controllers\Student\HomePageContr
 Route::get('/pages/homePage/getAllPage',[\App\Http\Controllers\Student\HomePageController::class,'getAllPage'])->name('dashboard.pages.home_page.getAllPage');
 Route::get('/pages/homePage/{page}/edit',[\App\Http\Controllers\Student\HomePageController::class,'edit'])->name('dashboard.pages.home_page.edit');
 Route::post('/pages/homePage/{page}/update',[\App\Http\Controllers\Student\HomePageController::class,'update'])->name('dashboard.pages.home_page.update');
+
+
+Route::get('/contact',[\App\Http\Controllers\Student\ContactController::class,'index'])->name('dashboard.contact');
+Route::get('/contact/getAllMsg',[\App\Http\Controllers\Student\ContactController::class,'getAllMsg'])->name('dashboard.contact.getAllMsg');

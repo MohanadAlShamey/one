@@ -91,12 +91,12 @@
                         <div class="form-row" v-else-if="group1_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group1.css" name="" id="" class="form-control">
+                                <select v-model="form.group1.bg" name="" id="" class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group1.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group1.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -165,12 +165,12 @@
                         <div class="form-row" v-else-if="group2_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group2.css" name=""  class="form-control">
+                                <select v-model="form.group2.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group2.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group2.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -241,12 +241,12 @@
                         <div class="form-row" v-else-if="group3_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group3.css" name=""  class="form-control">
+                                <select v-model="form.group3.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group3.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group3.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -324,12 +324,12 @@
                         <div class="form-row" v-else-if="group4_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group4.css" name=""  class="form-control">
+                                <select v-model="form.group4.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group4.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group4.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -393,12 +393,12 @@
                         <div class="form-row" v-else-if="group5_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group5.css" name=""  class="form-control">
+                                <select v-model="form.group5.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group5.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group5.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -476,12 +476,12 @@
                         <div class="form-row" v-else-if="group6_bg=='css'">
                             <div class="col-6">
                                 <label>الخلفية/تدرج لوني</label>
-                                <select v-model="form.group6.css" name=""  class="form-control">
+                                <select v-model="form.group6.bg" name=""  class="form-control">
                                     <option v-for="(bg,i) in bg_css" :value="bg.value">{{bg.name}} {{i}}</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div style="min-height: 150px" class="w-100" :style="form.group6.css"></div>
+                                <div style="min-height: 150px" class="w-100" :style="form.group6.bg"></div>
                             </div>
 
                             <!--<button type="button" @click="form.group1.bg='#000'" class="btn btn-sm"><i class="fa fa-plus"></i></button>-->
@@ -778,9 +778,75 @@ ${this.form.group7.name} هو وحده من يملك محتوى هذا المو�
             },
 
         },
+
         created(){
             this.form.fill(this.page);
-        }
+            if(this.form.group1.bg.includes('images')){
+                this.group1_bg='img';
+
+            }else if(this.form.group1.bg.length<9){
+                this.group1_bg='color';
+            }else{
+                this.group1_bg='css';
+            }
+
+            if(this.form.group2.bg.includes('images')){
+                this.group2_bg='img';
+
+            }else if(this.form.group2.bg.length<9){
+                this.group2_bg='color';
+            }else{
+                this.group2_bg='css';
+            }
+
+            if(this.form.group3.bg.includes('images')){
+                this.group3_bg='img';
+
+            }else if(this.form.group3.bg.length<9){
+                this.group3_bg='color';
+            }else{
+                this.group3_bg='css';
+            }
+
+            if(this.form.group4.bg.includes('images')){
+                this.group4_bg='img';
+
+            }else if(this.form.group4.bg.length<9){
+                this.group4_bg='color';
+            }else{
+                this.group4_bg='css';
+            }
+
+            if(this.form.group5.bg.includes('images')){
+                this.group5_bg='img';
+
+            }else if(this.form.group5.bg.length<9){
+                this.group5_bg='color';
+            }else{
+                this.group5_bg='css';
+            }
+
+            if(this.form.group6.bg.includes('images')){
+                this.group6_bg='img';
+
+            }else if(this.form.group6.bg.length<9){
+                this.group6_bg='color';
+            }else{
+                this.group6_bg='css';
+            }
+
+            if(this.form.group7.bg.includes('images')){
+                this.group7_bg='img';
+
+            }else if(this.form.group7.bg.length<9){
+                this.group7_bg='color';
+            }else{
+                this.group7_bg='css';
+            }
+
+
+        },
+
     }
 </script>
 

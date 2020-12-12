@@ -23,17 +23,21 @@ trait OperatorArray
         } );
     }
 
-    public function ImageUpload($string, $width = null)
+    public function ImageUpload($string, $width = null,$height=null,$ratio=false)
     {
         if ($string != null && Str::contains($string, 'base64')) {
             if ($width == null) {
                 $width = Image::make($string)->getWidth();
             }
+
+
             $ex = explode('/', explode(';', $string)[0])[1];
             // dd($ex);
             $name = 'images/upload/' . uniqid() . '.' . $ex;
-            Image::make($string)->resize($width, null, function ($r) {
-                $r->aspectRatio();
+            Image::make($string)->resize($width, $height, function ($r) use($ratio){
+                if($ratio){
+                    $r->aspectRatio();
+                }
             })/*->encode('webp', 100)*/
             ->save(storage_path('app/public/' . $name));
             return $name;

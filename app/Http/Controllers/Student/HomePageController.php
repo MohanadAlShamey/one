@@ -13,7 +13,14 @@ class HomePageController extends Controller
 
     public function index()
     {
-        return view('student.pages.home.index');
+
+        $page=Page::where('user_id',auth()->id())->where('type','homepage')->first();
+        if(!is_null($page)){
+
+            return view('student.pages.home.edit',compact('page'));
+        }
+        return view('student.pages.home.create');
+
     }
 
     public function getAllPage(Request $request)
@@ -30,7 +37,7 @@ class HomePageController extends Controller
 
     public function create()
     {
-        return view('student.pages.home.create');
+
     }
     public function store(Request $request)
     {
@@ -53,7 +60,7 @@ class HomePageController extends Controller
             $group3['services'][$key] = [
                 'name' => $request->group3['services'][$key]['name'],
                 'description' => $request->group3['services'][$key]['description'],
-                'img' => $this->ImageUpload($request->group3['services'][$key]['img']),
+                'img' => $this->ImageUpload($request->group3['services'][$key]['img'],65,65),
             ];
         }
         $group4 = $request->group4;
@@ -62,7 +69,7 @@ class HomePageController extends Controller
             $group4['gallery'][$key] = [
                 'name' => $request->group4['gallery'][$key]['name'],
                 'description' => $request->group4['gallery'][$key]['description'],
-                'img' => $this->ImageUpload($request->group4['gallery'][$key]['img']),
+                'img' => $this->ImageUpload($request->group4['gallery'][$key]['img'],500,250),
             ];
         }
         $group5 = $request->group5;
@@ -74,7 +81,7 @@ class HomePageController extends Controller
         Page::create([
             'user_id'=>auth()->id(),
             'name' => $request->name,
-            'logo' => $this->ImageUpload($request->logo, 75),
+            'logo' => $this->ImageUpload($request->logo, 48,48),
             'group1' => $group1,
             'group2' => $group2,
             'group3' => $group3,
@@ -88,12 +95,6 @@ class HomePageController extends Controller
 
 
 
-    public function edit(Page $page){
-        if($page->type!='homepage'){
-            return redirect(404);
-        }
-        return view('student.pages.home.edit',compact('page'));
-    }
 
     public function update(Request $request,Page $page)
     {
@@ -116,7 +117,7 @@ class HomePageController extends Controller
             $group3['services'][$key] = [
                 'name' => $request->group3['services'][$key]['name'],
                 'description' => $request->group3['services'][$key]['description'],
-                'img' => $this->ImageUpload($request->group3['services'][$key]['img']),
+                'img' => $this->ImageUpload($request->group3['services'][$key]['img'],65,65),
             ];
         }
         $group4 = $request->group4;
@@ -125,7 +126,7 @@ class HomePageController extends Controller
             $group4['gallery'][$key] = [
                 'name' => $request->group4['gallery'][$key]['name'],
                 'description' => $request->group4['gallery'][$key]['description'],
-                'img' => $this->ImageUpload($request->group4['gallery'][$key]['img']),
+                'img' => $this->ImageUpload($request->group4['gallery'][$key]['img'],500,250),
             ];
         }
         $group5 = $request->group5;
@@ -137,7 +138,7 @@ class HomePageController extends Controller
        $page->update([
 
             'name' => $request->name,
-            'logo' => $this->ImageUpload($request->logo, 75),
+            'logo' => $this->ImageUpload($request->logo, 48,48),
             'group1' => $group1,
             'group2' => $group2,
             'group3' => $group3,
@@ -148,7 +149,5 @@ class HomePageController extends Controller
         ]);
     }
 
-    public function privacy(Page $page){
 
-    }
 }

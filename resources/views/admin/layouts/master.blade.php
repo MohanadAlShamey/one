@@ -89,22 +89,65 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
-            @if(auth()->user()->hasOption('landingpage'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard.pages')}}">
-                      صفحات الهبوط
+            @if(auth()->user()->hasOption('homepage') ||auth()->user()->hasOption('landingpage'))
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <span>الصفحات</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    @if(auth()->user()->hasOption('homepage'))
+                    <a href="{{route('dashboard.pages.home_page')}}" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+
+                            <div class="media-body">
+                                <p class="text-sm">إعدادات الموقع</p>
+
+                            </div>
+                        </div>
+                        <!-- Message End -->
                     </a>
+                    <div class="dropdown-divider"></div>
+                        @php
+                            $page=\App\Page::where('user_id',auth()->id())->where('type','homepage')->first();
+                        @endphp
+                        @if(!is_null($page))
+                            <a href="{{route('home_page.show',$page)}}" class="dropdown-item">
+                                <!-- Message Start -->
+                                <div class="media">
 
-                </li>
-            @endif
+                                    <div class="media-body">
+                                        <p class="text-sm">معاينة الصفحة الرئيسية</p>
 
-            @if(auth()->user()->hasOption('homepage'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard.pages.home_page')}}">
-                      الصفحات الرئيسية
+                                    </div>
+                                </div>
+                                <!-- Message End -->
+                            </a>
+                            @endif
+                    @endif
+                    @if(auth()->user()->hasOption('landingpage'))
+                    <a href="{{route('dashboard.pages')}}" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+
+                            <div class="media-body">
+                                <p class="text-sm">صفحات الهبوط</p>
+
+                            </div>
+                        </div>
+                        <!-- Message End -->
                     </a>
+                        @endif
 
-                </li>
+                </div>
+            </li>
+
+@endif
+@if(\App\Contact::where('user_id',auth()->id())->count()>0)
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="index3.html" class="nav-link">الرسائل</a>
+            </li>
             @endif
         {{-- @include('admin.layouts.ul')--}}
             {{--  <li class="nav-item d-none d-sm-inline-block">

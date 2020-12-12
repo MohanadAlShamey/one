@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Page;
 use Carbon\Carbon;
@@ -39,5 +40,35 @@ class PageController extends Controller
         }
         $type='terams';
         return view('site.home.privacy',compact('page','type'));
+    }
+
+    public function contact(Page $page){
+        // return $page;
+        if($page->type!='homepage'){
+            return redirect(404);
+        }
+
+        return view('site.home.contact',compact('page'));
+    }
+
+    public function storeContact(Request $request,Page $page){
+$this->validate($request,[
+    'name'=>'required',
+    'email'=>'required|email',
+    'msg'=>'required'
+],[
+    'name.required'=>'حقل الاسم مطلوب',
+    'email.required'=>'حقل البريد الإلكتروني مطلوب',
+    'email.email'=>'البريد الإلكتروني غير صالح',
+    'msg.required'=>'يجب كتابة الرسالة',
+]);
+
+Contact::create([
+    'user_id'=>$page->user_id,
+    'name'=>$request->name,
+    'email'=>$request->email,
+    'msg'=>$request->msg,
+]);
+return redirect()->route('home_page.show',$page)->with('success','تم إرسال الرسالة بنجاح سيتم الرد بأقرب وقت ممكن');
     }
 }

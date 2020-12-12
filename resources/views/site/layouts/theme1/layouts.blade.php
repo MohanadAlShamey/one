@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
+@php
+    $asset=asset('/home_page/assets/');
+    $storage="storage/";
+@endphp
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -33,406 +37,406 @@
     @endphp
 
     @if($page->group1->active)
-    @php
+        @php
 
-        if(isset($page->group1->css)&&!is_null($page->group1->css)){
-        $bg1=$page->group1->css;
-        }elseif(\Illuminate\Support\Str::length($page->group1->bg)<=8){
-            $bg1="background-color:".$page->group1->bg;
-            }else{
-            $bg1='background-image:url("'.asset($asset.$page->group1->bg).'");';
-            $bg1.=$page->group1->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group1->size.';';
+       if(\Illuminate\Support\Str::length($page->group1->bg)<9){
+       $bg1="background:".$page->group1->bg;
+       }elseif(\Illuminate\Support\Str::contains($page->group1->bg,'images/upload')){
+       $bg1='background-image:url("'.asset($storage.$page->group1->bg).'");';
+       $bg1.=$page->group1->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group1->size;
+       }else{
+       $bg1=$page->group1->bg;
+       }
 
-            }
-    @endphp
+        @endphp
 
-    <div class="container py-5" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center ">
-            <div class="col-12">
-                <h4 class="d-flex flex-column text-center">
-                    <strong class="text-white">{{$page->group1->title}}</strong>
-                    <strong class="text-warning">
-                        <small>{{$page->group1->sub_title}}</small>
-                    </strong>
-                </h4>
-            </div>
-            <div class="col-md-8 col-sm-12">
-                <div class="img-thumbnail p-2 border-0 bg-dark my-2">
-                    @if(\Illuminate\Support\Str::contains($page->group1->video,'images')&&\Illuminate\Support\Str::contains($page->group1->video,'upload'))
-                        <img src="{{asset($asset.$page->group1->video)}}" class="img-fluid" alt="">
-                    @else
-                        <div class="embed-responsive embed-responsive-16by9">
-                            {!! $page->group1->video !!}
-                        </div>
-                    @endif
+        <div class="container py-5" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center ">
+                <div class="col-12">
+                    <h4 class="d-flex flex-column text-center">
+                        <strong class="text-white">{{$page->group1->title}}</strong>
+                        <strong class="text-warning">
+                            <small>{{$page->group1->sub_title}}</small>
+                        </strong>
+                    </h4>
                 </div>
-            </div>
-            <div class="col-12 text-center my-3">
-                <div class="d-flex flex-column text-center justify-content-center">
-                    <span class="text-white text-center h6 mb-2">{{$page->group1->cta}}</span>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 mt-2">
-                            <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
-                                        class="text-white text-center">{{$page->group1->btn}}</strong></a>
+                <div class="col-md-8 col-sm-12">
+                    <div class="img-thumbnail p-2 border-0 bg-dark my-2">
+                        @if(\Illuminate\Support\Str::contains($page->group1->video,'images')&&\Illuminate\Support\Str::contains($page->group1->video,'upload'))
+                            <img src="{{asset($asset.$page->group1->video)}}" class="img-fluid" alt="">
+                        @else
+                            <div class="embed-responsive embed-responsive-16by9">
+                                {!! $page->group1->video !!}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-12 text-center my-3">
+                    <div class="d-flex flex-column text-center justify-content-center">
+                        <span class="text-white text-center h6 mb-2">{{$page->group1->cta}}</span>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12 mt-2">
+                                <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
+                                            class="text-white text-center">{{$page->group1->btn}}</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{--End Group 1 --}}
+        {{--End Group 1 --}}
     @endif
     @if($page->group2->active)
-    @php
-        if(isset($page->group2->css)&&!is_null($page->group2->css)){
-        $bg1=$page->group2->css;
-        }elseif(\Illuminate\Support\Str::length($page->group2->bg)<=8){
-        $bg1="background-color:".$page->group2->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group2->bg).'");';
-        $bg1.=$page->group2->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group2->size;
-        }
-    @endphp
-    <div class="container py-3" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h4 class="text-center my-2"><strong class="text-black">
-                        {{$page->group2->title}}
-                    </strong></h4>
-            </div>
+        @php
+            if(\Illuminate\Support\Str::length($page->group2->bg)<=8){
+         $bg1="background-color:".$page->group2->bg;
+         }elseif(\Illuminate\Support\Str::contains($page->group2->bg,'images/upload')){
+         $bg1='background-image:url("'.asset($storage.$page->group2->bg).'");';
+         $bg1.=$page->group2->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group2->size;
+         }else{
+         $bg1=$page->group2->bg;
+         }
+        @endphp
+        <div class="container py-3" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h4 class="text-center my-2"><strong class="text-black">
+                            {{$page->group2->title}}
+                        </strong></h4>
+                </div>
 
+            </div>
+            <div class="row ">
+                <div class="col-sm-12 col-md-6  text-center">
+                    <div class="d-flex flex-column my-5 justify-content-center">
+                        <countdown :time="{{20*50*$count}}">
+                            <template slot-scope="props">
+
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="mx-3">
+                                        <span class=" h3">@{{ props.days }}</span>
+                                        <hr>
+                                        <span class="text-danger h3">يوم</span>
+                                    </div>
+
+                                    <div class="mx-3">
+                                        <span class=" h3">@{{ props.hours }}</span>
+                                        <hr>
+                                        <span class="text-danger h3">ساعة</span>
+                                    </div>
+
+
+                                    <div class="mx-3">
+                                        <span class=" h3">@{{ props.minutes }}</span>
+                                        <hr>
+                                        <span class="text-danger h3">دقيقة</span>
+                                    </div>
+
+                                    <div class="mx-3">
+                                        <span class=" h3">@{{ props.seconds }}</span>
+                                        <hr>
+                                        <span class="text-danger h3">ثانية</span>
+                                    </div>
+                                </div>
+
+                            </template>
+                        </countdown>
+                    </div>
+                    <div class="my-2 p-2 d-none d-md-block text-center">
+                        <span class="text-bold h5 text-center"><strong>{{$page->group2->qnt}}</strong></span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="text-center">
+                        <img src="{{asset($asset.$page->group2->img)}}" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 d-none d-block d-md-none">
+                    <div class="my-1 p-1 text-center">
+                        <span class="text-bold h5 text-center"><strong>{{$page->group2->qnt}}</strong></span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row ">
-            <div class="col-sm-12 col-md-6  text-center">
-                <div class="d-flex flex-column my-5 justify-content-center">
-                    <countdown :time="{{20*50*$count}}">
-                        <template slot-scope="props">
-
-                            <div class="d-flex flex-row justify-content-center">
-                                <div class="mx-3">
-                                    <span class=" h3">@{{ props.days }}</span>
-                                    <hr>
-                                    <span class="text-danger h3">يوم</span>
-                                </div>
-
-                                <div class="mx-3">
-                                    <span class=" h3">@{{ props.hours }}</span>
-                                    <hr>
-                                    <span class="text-danger h3">ساعة</span>
-                                </div>
-
-
-                                <div class="mx-3">
-                                    <span class=" h3">@{{ props.minutes }}</span>
-                                    <hr>
-                                    <span class="text-danger h3">دقيقة</span>
-                                </div>
-
-                                <div class="mx-3">
-                                    <span class=" h3">@{{ props.seconds }}</span>
-                                    <hr>
-                                    <span class="text-danger h3">ثانية</span>
-                                </div>
-                            </div>
-
-                        </template>
-                    </countdown>
-                </div>
-                <div class="my-2 p-2 d-none d-md-block text-center">
-                    <span class="text-bold h5 text-center"><strong>{{$page->group2->qnt}}</strong></span>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="text-center">
-                    <img src="{{asset($asset.$page->group2->img)}}" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 d-none d-block d-md-none">
-                <div class="my-1 p-1 text-center">
-                    <span class="text-bold h5 text-center"><strong>{{$page->group2->qnt}}</strong></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{--End Group 2 --}}
+        {{--End Group 2 --}}
     @endif
     @if($page->group3->active)
-    {{--End Group 1 --}}
-    @php
-        if(isset($page->group3->css)&&!is_null($page->group3->css)){
-        $bg1=$page->group3->css;
-        }elseif(\Illuminate\Support\Str::length($page->group3->bg)<=8){
-        $bg1="background-color:".$page->group3->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group3->bg).'");';
-        $bg1.=$page->group3->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group3->size;
-        }
-    @endphp
-    <div class="container py-3" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-12 text-right py-3">
-                @foreach($page->group3->problems as $problem)
-                    <div class="d-flex flex-row justify-content-start my-3">
-                        <i class="far fa-window-close text-danger fa-2x"></i>
-                        <span class="mx-2 lead">{{$problem}}</span>
+        {{--End Group 1 --}}
+        @php
+            if(\Illuminate\Support\Str::length($page->group3->bg)<=8){
+       $bg1="background-color:".$page->group3->bg;
+       }elseif(\Illuminate\Support\Str::contains($page->group3->bg,'images/upload')){
+       $bg1='background-image:url("'.asset($storage.$page->group3->bg).'");';
+       $bg1.=$page->group3->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group3->size;
+       }else{
+       $bg1=$page->group3->bg;
+       }
+        @endphp
+        <div class="container py-3" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-12 text-right py-3">
+                    @foreach($page->group3->problems as $problem)
+                        <div class="d-flex flex-row justify-content-start my-3">
+                            <i class="far fa-window-close text-danger fa-2x"></i>
+                            <span class="mx-2 lead">{{$problem}}</span>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="text-center">
+                        <img src="{{asset($asset.$page->group3->img)}}" class="img-fluid" alt="">
                     </div>
-                @endforeach
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="text-center">
-                    <img src="{{asset($asset.$page->group3->img)}}" class="img-fluid" alt="">
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-12">
-            <div class="img-thumbnail p-3 border-0 radius shadow-box d-flex flex-column justify-content-center"
-                 style="background-color: transparent">
-                <div class="bg-black radius" style="background-color: #000">
-                    <p class="text-center p-2 text-white h5 ">{{$page->group3->story}}</p>
+            <div class="col-md-12">
+                <div class="img-thumbnail p-3 border-0 radius shadow-box d-flex flex-column justify-content-center"
+                     style="background-color: transparent">
+                    <div class="bg-black radius" style="background-color: #000">
+                        <p class="text-center p-2 text-white h5 ">{{$page->group3->story}}</p>
+                    </div>
                 </div>
             </div>
+
+
         </div>
-
-
-    </div>
     @endif
     @if($page->group4->active)
 
-    @php
-        if(isset($page->group4->css)&&!is_null($page->group4->css)){
-        $bg1=$page->group4->css;
-        }elseif(\Illuminate\Support\Str::length($page->group4->bg)<=8){
-        $bg1="background-color:".$page->group4->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group4->bg).'");';
-        $bg1.=$page->group4->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group4->size.';background-repeat:no-repeat';
-        }
-    @endphp
-    <div class="container py-3" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-12 text-right py-3">
-                @foreach($page->group4->solutions as $problem)
-                    <div class="d-flex flex-row justify-content-start my-3">
+        @php
+            if(\Illuminate\Support\Str::length($page->group4->bg)<=8){
+    $bg1="background-color:".$page->group4->bg;
+    }elseif(\Illuminate\Support\Str::contains($page->group4->bg,'images/upload')){
+    $bg1='background-image:url("'.asset($storage.$page->group4->bg).'");';
+    $bg1.=$page->group4->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group4->size;
+    }else{
+    $bg1=$page->group4->bg;
+    }
+        @endphp
+        <div class="container py-3" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-12 text-right py-3">
+                    @foreach($page->group4->solutions as $problem)
+                        <div class="d-flex flex-row justify-content-start my-3">
                         <span class="d-flex flex-column justify-content-center"> <i
                                     class="fa fa-exclamation text-danger fa-2x"></i></span>
-                        <p class="mx-2 text-justify h5">{{$problem}}</p>
+                            <p class="mx-2 text-justify h5">{{$problem}}</p>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="text-center">
+                        <img src="{{asset($asset.$page->group4->img)}}" class="img-fluid" alt="">
                     </div>
-                @endforeach
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="text-center">
-                    <img src="{{asset($asset.$page->group4->img)}}" class="img-fluid" alt="">
                 </div>
             </div>
-        </div>
-        <div class="row justify-content-center my-2">
-            <div class="col-md-12">
-                <div class="d-flex flex-column text-center justify-content-center">
-                    <span class="h5 border-dashed p-3 my-2"><strong>{{$page->group4->cta}}</strong></span>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 my-2">
-                            <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
-                                        class="text-white">{{$page->group4->btn}}</strong></a>
+            <div class="row justify-content-center my-2">
+                <div class="col-md-12">
+                    <div class="d-flex flex-column text-center justify-content-center">
+                        <span class="h5 border-dashed p-3 my-2"><strong>{{$page->group4->cta}}</strong></span>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12 my-2">
+                                <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
+                                            class="text-white">{{$page->group4->btn}}</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     @endif
     @if($page->group5->active)
-    @php
-        if(isset($page->group5->css)&&!is_null($page->group5->css)){
-        $bg1=$page->group5->css;
-        }elseif(\Illuminate\Support\Str::length($page->group5->bg)<=8){
-        $bg1="background-color:".$page->group5->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group5->bg).'");';
-        $bg1.=$page->group5->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group5->size.';background-repeat:no-repeat';
-        }
-    @endphp
-    <div class="container py-2" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center py-3">
-                <h3 class="text-white text-center">{{$page->group5->price}}</h3>
+        @php
+            if(\Illuminate\Support\Str::length($page->group5->bg)<=8){
+ $bg1="background-color:".$page->group5->bg;
+ }elseif(\Illuminate\Support\Str::contains($page->group5->bg,'images/upload')){
+ $bg1='background-image:url("'.asset($storage.$page->group5->bg).'");';
+ $bg1.=$page->group5->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group5->size;
+ }else{
+ $bg1=$page->group5->bg;
+ }
+        @endphp
+        <div class="container py-2" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center py-3">
+                    <h3 class="text-white text-center">{{$page->group5->price}}</h3>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-12 text-right py-3">
-                @foreach($page->group5->benefists as $problem)
-                    <div class="d-flex flex-row justify-content-start my-3 ">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-12 text-right py-3">
+                    @foreach($page->group5->benefists as $problem)
+                        <div class="d-flex flex-row justify-content-start my-3 ">
                         <span class="d-flex flex-column justify-content-center"> <i
                                     class="fa fa-star text-warning fa-2x"></i></span>
-                        <span class="mx-1 lead text-white border-dashed h5">{{$problem}}</span>
+                            <span class="mx-1 lead text-white border-dashed h5">{{$problem}}</span>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="text-center">
+                        <img src="{{asset($asset.$page->group5->img)}}" class="img-fluid" alt="">
                     </div>
-                @endforeach
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="text-center">
-                    <img src="{{asset($asset.$page->group5->img)}}" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
-    </div>
     @endif
     @if($page->group6->active)
-    @php
-        if(isset($page->group6->css)&&!is_null($page->group6->css)){
-        $bg1=$page->group6->css;
-        }elseif(\Illuminate\Support\Str::length($page->group6->bg)<=8){
-        $bg1="background-color:".$page->group6->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group6->bg).'");';
-        $bg1.=$page->group6->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group6->size.';background-repeat:no-repeat';
-        }
-    @endphp
-    <div class="container py-2" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-12 text-right py-3">
-                @foreach($page->group6->dangers as $problem)
-                    <div class="d-flex flex-row justify-content-start my-3">
+        @php
+            if(\Illuminate\Support\Str::length($page->group6->bg)<=8){
+$bg1="background-color:".$page->group6->bg;
+}elseif(\Illuminate\Support\Str::contains($page->group6->bg,'images/upload')){
+$bg1='background-image:url("'.asset($storage.$page->group6->bg).'");';
+$bg1.=$page->group6->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group6->size;
+}else{
+$bg1=$page->group6->bg;
+}
+        @endphp
+        <div class="container py-2" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-12 text-right py-3">
+                    @foreach($page->group6->dangers as $problem)
+                        <div class="d-flex flex-row justify-content-start my-3">
                         <span class="d-flex flex-column justify-content-center"> <i
                                     class="fa fa-check  fa-2x"></i></span>
-                        <span class="mx-1 lead text-black  border-dashed h5">{{$problem}}</span>
+                            <span class="mx-1 lead text-black  border-dashed h5">{{$problem}}</span>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="text-center">
+                        <img src="{{asset($asset.$page->group6->img)}}" class="img-fluid" alt="">
                     </div>
-                @endforeach
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="text-center">
-                    <img src="{{asset($asset.$page->group6->img)}}" class="img-fluid" alt="">
                 </div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <p class="border-dashed py-3 px-2 text-warning border-warning text-center lead"
-               style="background-color: #000;">{{$page->group6->footer}}</p>
-        </div>
-    </div>
-    @endif
-    @if($page->group7->active)
-    @php
-        if(isset($page->group7->css)&&!is_null($page->group7->css)){
-        $bg1=$page->group7->css;
-        }elseif(\Illuminate\Support\Str::length($page->group7->bg)<=8){
-        $bg1="background-color:".$page->group7->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group7->bg).'");';
-        $bg1.=$page->group7->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group7->size.';background-repeat:no-repeat';
-        }
-    @endphp
-    <div class="container py-2" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
             <div class="col-md-12">
-                <h3 class="text-center text-bold my-2">{{$page->group7->title}}</h3>
-
-            </div>
-            <div class="col-md-12">
-                <p class="border-dashed py-3 px-2 my-3 text-center lead">{{$page->group7->price}}</p>
-            </div>
-        </div>
-    </div>
-    @endif
-    @if($page->group8->active)
-    @php
-        if(isset($page->group8->css)&&!is_null($page->group8->css)){
-        $bg1=$page->group8->css;
-        }elseif(\Illuminate\Support\Str::length($page->group8->bg)<=8){
-        $bg1="background-color:".$page->group8->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group8->bg).'");';
-        $bg1.=$page->group8->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group8->size.';background-repeat:no-repeat';
-        }
-    @endphp
-
-    <div class="container py-2" style="{{html_entity_decode($bg1)}}">
-
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-                <h4 class="border-dashed text-center text-white"
-                    style="border-radius: 0px !important;">{{$page->group8->title}}</h4>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-12 text-right py-3">
-                @foreach($page->group8->benefists as $problem)
-                    <div class="d-flex flex-row justify-content-start my-3">
-                        <span class="d-flex flex-column justify-content-center"> <i
-                                    class="fa fa-check text-white fa-2x"></i></span>
-                        <span class="mx-1 lead text-white  border-dashed">{{$problem}}</span>
-                    </div>
-                @endforeach
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="text-center">
-                    <img src="{{asset($asset.$page->group8->img)}}" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-
-            <div class="col-md-12">
-                <p class="text-white py-3 px-2  text-center lead"
+                <p class="border-dashed py-3 px-2 text-warning border-warning text-center lead"
                    style="background-color: #000;">{{$page->group6->footer}}</p>
             </div>
-
         </div>
-        <div class="row justify-content-center my-2">
-            <div class="col-md-12">
-                <div class="d-flex flex-column text-center justify-content-center">
-                    <span class="h4 text-warning p-3 my-2">{{$page->group8->cta}}</span>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 my-2">
-                            <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
-                                        class="text-white">{{$page->group8->btn}}</strong></a>
+    @endif
+    @if($page->group7->active)
+        @php
+            if(\Illuminate\Support\Str::length($page->group7->bg)<=8){
+$bg1="background-color:".$page->group7->bg;
+}elseif(\Illuminate\Support\Str::contains($page->group7->bg,'images/upload')){
+$bg1='background-image:url("'.asset($storage.$page->group7->bg).'");';
+$bg1.=$page->group7->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group7->size;
+}else{
+$bg1=$page->group7->bg;
+}
+        @endphp
+        <div class="container py-2" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <h3 class="text-center text-bold my-2">{{$page->group7->title}}</h3>
+
+                </div>
+                <div class="col-md-12">
+                    <p class="border-dashed py-3 px-2 my-3 text-center lead">{{$page->group7->price}}</p>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if($page->group8->active)
+        @php
+            if(\Illuminate\Support\Str::length($page->group8->bg)<=8){
+$bg1="background-color:".$page->group8->bg;
+}elseif(\Illuminate\Support\Str::contains($page->group8->bg,'images/upload')){
+$bg1='background-image:url("'.asset($storage.$page->group8->bg).'");';
+$bg1.=$page->group8->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group8->size;
+}else{
+$bg1=$page->group8->bg;
+}
+        @endphp
+
+        <div class="container py-2" style="{{html_entity_decode($bg1)}}">
+
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <h4 class="border-dashed text-center text-white"
+                        style="border-radius: 0px !important;">{{$page->group8->title}}</h4>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-12 text-right py-3">
+                    @foreach($page->group8->benefists as $problem)
+                        <div class="d-flex flex-row justify-content-start my-3">
+                        <span class="d-flex flex-column justify-content-center"> <i
+                                    class="fa fa-check text-white fa-2x"></i></span>
+                            <span class="mx-1 lead text-white  border-dashed">{{$problem}}</span>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="text-center">
+                        <img src="{{asset($asset.$page->group8->img)}}" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+
+                <div class="col-md-12">
+                    <p class="text-white py-3 px-2  text-center lead"
+                       style="background-color: #000;">{{$page->group6->footer}}</p>
+                </div>
+
+            </div>
+            <div class="row justify-content-center my-2">
+                <div class="col-md-12">
+                    <div class="d-flex flex-column text-center justify-content-center">
+                        <span class="h4 text-warning p-3 my-2">{{$page->group8->cta}}</span>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12 my-2">
+                                <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
+                                            class="text-white">{{$page->group8->btn}}</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     @endif
     @if($page->group9->active)
-    @php
-        if(isset($page->group9->css)&&!is_null($page->group9->css)){
-        $bg1=$page->group9->css;
-        }elseif(\Illuminate\Support\Str::length($page->group9->bg)<=8){
-        $bg1="background-color:".$page->group9->bg;
-        }else{
-        $bg1='background-image:url("'.asset($asset.$page->group9->bg).'");';
-        $bg1.=$page->group9->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group9->size.';background-repeat:no-repeat';
-        }
-    @endphp
-    <div class="container py-2" style="{{html_entity_decode($bg1)}}">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-                @foreach($page->group9->benefists as $benefist)
-                    <div class="my-2">
-                        <span><i class="fa fa-chevron-down fa-2x"></i></span>
-                        <p class="border-dashed text-center text-bold h5">
-                            {{$benefist}}
-                        </p>
-                    </div>
-                @endforeach
+        @php
+            if(\Illuminate\Support\Str::length($page->group9->bg)<=8){
+$bg1="background-color:".$page->group9->bg;
+}elseif(\Illuminate\Support\Str::contains($page->group9->bg,'images/upload')){
+$bg1='background-image:url("'.asset($storage.$page->group8->bg).'");';
+$bg1.=$page->group9->size=='repeat'?'background-repeat:repeat':'background-size:'.$page->group9->size;
+}else{
+$bg1=$page->group9->bg;
+}
+        @endphp
+        <div class="container py-2" style="{{html_entity_decode($bg1)}}">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    @foreach($page->group9->benefists as $benefist)
+                        <div class="my-2">
+                            <span><i class="fa fa-chevron-down fa-2x"></i></span>
+                            <p class="border-dashed text-center text-bold h5">
+                                {{$benefist}}
+                            </p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center my-2">
-            <div class="col-md-12">
-                <div class="d-flex flex-column text-center justify-content-center">
-                    <span class="h5  p-3 my-2" style="color:#f00"><strong>{{$page->group9->cta}}</strong></span>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 my-2">
-                            <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
-                                        class="text-white">{{$page->group9->btn}}</strong></a>
+            <div class="row justify-content-center my-2">
+                <div class="col-md-12">
+                    <div class="d-flex flex-column text-center justify-content-center">
+                        <span class="h5  p-3 my-2" style="color:#f00"><strong>{{$page->group9->cta}}</strong></span>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12 my-2">
+                                <a href="" class=" btn btn-sm btn-cta w-100 m-auto"><strong
+                                            class="text-white">{{$page->group9->btn}}</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        @endif
+    @endif
 </section>
 
 

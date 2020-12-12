@@ -60,7 +60,9 @@ protected $appends=['optionIds'];
 
     }
 
-
+public function contacts(){
+        return $this->hasMany(Contact::class);
+}
 
 
 
