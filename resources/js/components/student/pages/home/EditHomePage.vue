@@ -30,6 +30,10 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group1.color" class="form-control">
+                        </div>
                         <!--<div class="form-group">
                             <label>لوغو</label>
                             <input @change="changeImg($event,'logo')" type="file"
@@ -117,6 +121,10 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group2.color" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>من نحن</label>
                             <textarea  v-model="form.group2.body" class="form-control"></textarea>
                         </div>
@@ -188,6 +196,10 @@
                         <span> المجموعة الثالثة</span>
                     </div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group3.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label >خدماتنا</label>
                             <service-template v-for="(item,index) in form.group3.services.length"
@@ -269,7 +281,10 @@
 
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group4.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label >المعرض</label>
                             <gallery-template v-for="(item,index) in form.group4.gallery.length"
@@ -348,6 +363,10 @@
                         <span>نموذج إتصل بنا</span>
                     </div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group5.color" class="form-control">
+                        </div>
                         <!--Background-->
                         <div class="form-group">
                             <div class="form-check-inline">
@@ -417,7 +436,10 @@
                         <span>المجموعة السادسة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group6.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>صفحة فيسبوك</label>
                             <input type="url" v-model="form.group6.face" class="form-control">

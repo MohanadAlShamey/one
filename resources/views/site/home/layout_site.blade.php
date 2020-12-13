@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{{$page->name}}</title>
     <link rel="stylesheet" href="{{$asset}}/bootstrap/css/bootstrap.min.css">
-
+    <link rel="icon" href="{{asset($storage.$page->logo)}}" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{$asset}}//css/styles.min.css">
@@ -76,27 +76,27 @@
         <!-- Start: Social Icons -->
         <div class="social">
             @if($page->group6->inestagram!='')
-                <a href="{{$page->group6->inestagram}}">
+                <a style="color:{{$page->group6->color}}" href="{{$page->group6->inestagram}}">
                     <i class="icon ion-social-instagram"></i>
                 </a>
             @endif
             @if($page->group6->twitter!='')
 
-                <a href="{{$page->group6->twitter}}">
+                <a style="color:{{$page->group6->color}}" href="{{$page->group6->twitter}}">
                     <i class="icon ion-social-twitter"></i>
                 </a>
             @endif
             @if($page->group6->face!='')
-                <a href="{{$page->group6->face}}">
+                <a style="color:{{$page->group6->color}}" href="{{$page->group6->face}}">
                     <i class="icon ion-social-facebook"></i>
                 </a>
             @endif
         </div><!-- End: Social Icons -->
         <!-- Start: Links -->
         <ul class="list-inline">
-            <li class="list-inline-item"><a class="js-scroll-trigger" href="{{route('home_page.terams',$page)}}">شروط الإستخدام</a></li>
-            <li class="list-inline-item"><a class="js-scroll-trigger" href="{{route('home_page.policy',$page)}}">سياسة الخصوصية</a></li>
-            <li class="list-inline-item"><a class="js-scroll-trigger" href="{{route('home_page.contact',$page)}}">إتصل بنا</a></li>
+            <li class="list-inline-item"><a class="js-scroll-trigger" style="color:{{$page->group6->color}}" href="{{route('home_page.terams',$page)}}">شروط الإستخدام</a></li>
+            <li class="list-inline-item"><a class="js-scroll-trigger" style="color:{{$page->group6->color}}" href="{{route('home_page.policy',$page)}}">سياسة الخصوصية</a></li>
+            <li class="list-inline-item"><a class="js-scroll-trigger" style="color:{{$page->group6->color}}" href="{{route('home_page.contact',$page)}}">إتصل بنا</a></li>
 
         </ul><!-- End: Links -->
         <!-- Start: Copyright -->

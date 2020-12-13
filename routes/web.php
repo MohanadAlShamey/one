@@ -35,3 +35,4 @@ Route::get('/homePage/{page:name}/policy',[\App\Http\Controllers\Site\PageContro
 Route::get('/homePage/{page:name}/terms',[\App\Http\Controllers\Site\PageController::class,'terams'])->name('home_page.terams');
 Route::get('/homePage/{page:name}/contact',[\App\Http\Controllers\Site\PageController::class,'contact'])->name('home_page.contact');
 Route::post('/homePage/{page:name}/contact',[\App\Http\Controllers\Site\PageController::class,'storeContact'])->name('home_page.contact.store');
+Route::post('/orders/{page:name}/store',[\App\Http\Controllers\Site\OrderController::class,'store'])->name('orders.store');

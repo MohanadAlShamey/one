@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index(Page $page){
-        $end=Carbon::createFromFormat('Y-m-d',date('Y-m-d',strtotime($page->group2->date)))->endOfDay()->endOfHour()->endOfMinute()->endOfSecond();
+        $end=Carbon::createFromFormat('Y-m-d',date('Y-m-d',strtotime($page->group2->date??'01-01-1990')))->endOfDay()->endOfHour()->endOfMinute()->endOfSecond();
         //dd($end);
         $count=Carbon::now()->diffInSeconds($end);
         //dd($count);

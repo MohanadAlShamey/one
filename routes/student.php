@@ -112,3 +112,6 @@ Route::post('/pages/homePage/{page}/update',[\App\Http\Controllers\Student\HomeP
 
 Route::get('/contact',[\App\Http\Controllers\Student\ContactController::class,'index'])->name('dashboard.contact');
 Route::get('/contact/getAllMsg',[\App\Http\Controllers\Student\ContactController::class,'getAllMsg'])->name('dashboard.contact.getAllMsg');
+
+Route::get('/orders',[\App\Http\Controllers\Student\OrderController::class,'index'])->name('dashboard.orders');
+Route::get('/orders/getAllOrder',[\App\Http\Controllers\Student\OrderController::class,'getAllOrder'])->name('dashboard.orders.getAllOrder');

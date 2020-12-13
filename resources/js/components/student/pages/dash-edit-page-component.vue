@@ -25,12 +25,16 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!--<div class="form-group">
+                        <div class="form-group">
                             <label>لوغو</label>
                             <input @change="changeImg($event,'logo')" type="file"
                                    class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }">
                             <span class="text-danger small" v-if="form.errors.has('img_video')">{{form.errors.get('img_video')}}</span>
-                        </div>-->
+                        </div>
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group1.color" class="form-control">
+                        </div>
 
                         <div class="form-group">
                             <label>هيد لاين</label>
@@ -145,7 +149,10 @@
                         <span> المجموعة الثانية</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group2.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group2.title" class="form-control">
@@ -237,7 +244,10 @@
                         <span> المجموعة الثالثة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group3.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>المشاكل</label>
                             <input type="text" class="form-control my-1"
@@ -333,7 +343,10 @@
 
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group4.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>الحلول</label>
                             <input type="text" class="form-control my-1"
@@ -433,7 +446,10 @@
                         <span>المموعة الخامسة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group5.color" class="form-control">
+                        </div>
                         <!-- <div class="form-group">
                              <label>العنوان</label>
                              <input type="text" v-model="form.group5.title" class="form-control">
@@ -524,7 +540,10 @@
                         <span>المجموعة السادسة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group6.color" class="form-control">
+                        </div>
                         <!--<div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group6.title" class="form-control">
@@ -618,7 +637,10 @@
                         <span> المجموعة السابعة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group7.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group7.title" class="form-control">
@@ -700,7 +722,10 @@
                         <span>المجموعة الثامنة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group8.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group8.title" class="form-control">
@@ -801,7 +826,10 @@
                         <span>المجموعة التاسعة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group9.color" class="form-control">
+                        </div>
                         <!-- <div class="form-group">
                              <label>العنوان</label>
                              <input type="text" v-model="form.group9.title" class="form-control">
@@ -1047,6 +1075,9 @@
                     name: '',
                     logo: '',
                     group1: {
+
+                        color:'',
+
                         active: false,
                         title: "",
                         video: "",
@@ -1059,6 +1090,9 @@
                         size: "cover"
                     },
                     group2: {
+
+                        color:'',
+
                         active: false,
                         title: "",
                         body: "",
@@ -1072,6 +1106,9 @@
                         size: "cover"
                     },
                     group3: {
+
+                        color:'',
+
                         active: false,
                         problems: [],
                         img: "",
@@ -1084,6 +1121,9 @@
                         size: "cover"
                     },
                     group4: {
+
+                        color:'',
+
                         active: false,
                         solutions: [],
                         img: "",
@@ -1096,6 +1136,9 @@
                         size: "cover"
                     },
                     group5: {
+
+                        color:'',
+
                         active: false,
                         title: "",
                         price: "",
@@ -1106,6 +1149,9 @@
                         size: "cover"
                     },
                     group6: {
+
+                        color:'',
+
                         active: false,
                         title: "",
                         price: "",
@@ -1116,8 +1162,14 @@
                         css: "",
                         size: ""
                     },
-                    group7: {active: false, title: "", sub_title: "", price: "", bg: "", css: "", size: ""},
+                    group7: {
+
+                        color:'',
+                        active: false, title: "", sub_title: "", price: "", bg: "", css: "", size: ""},
                     group8: {
+
+                        color:'',
+
                         active: false,
                         title: "",
                         benefists: [],
@@ -1130,6 +1182,9 @@
                         size: ""
                     },
                     group9: {
+
+                        color:'',
+
                         active: false,
                         title: "",
                         sub_title: "",
@@ -1141,6 +1196,9 @@
                         size: ""
                     },
                     group10: {
+
+                        color:'',
+
                         active: false,
                         questions: [{ask: "", answer: ""}],
                         cta: "",
@@ -1149,7 +1207,10 @@
                         css: "",
                         size: ""
                     },
-                    group11: {active: false, bg: "", css: "", size: ""},
+                    group11: {
+
+                        color:'',
+                        active: false, bg: "", css: "", size: ""},
                 }),
             }
         },

@@ -146,8 +146,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @endif
 @if(\App\Contact::where('user_id',auth()->id())->count()>0)
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">الرسائل</a>
+                <a href="{{route('dashboard.contact')}}" class="nav-link">الرسائل</a>
             </li>
+            @endif
+
+            @if(\App\Order::where('user_id',auth()->id())->count()>0)
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{route('dashboard.orders')}}" class="nav-link">الطلبات</a>
+                </li>
             @endif
         {{-- @include('admin.layouts.ul')--}}
             {{--  <li class="nav-item d-none d-sm-inline-block">

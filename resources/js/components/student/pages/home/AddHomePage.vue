@@ -31,6 +31,10 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group1.color" class="form-control">
+                        </div>
                         <!--<div class="form-group">
                             <label>لوغو</label>
                             <input @change="changeImg($event,'logo')" type="file"
@@ -118,6 +122,10 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group2.color" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>من نحن</label>
                             <textarea  v-model="form.group2.body" class="form-control"></textarea>
                         </div>
@@ -189,6 +197,10 @@
                         <span> المجموعة الثالثة</span>
                     </div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group3.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label >خدماتنا</label>
                             <service-template v-for="(item,index) in form.group3.services.length" :key="index" @change-value="changeService($event,index)"></service-template>
@@ -268,7 +280,10 @@
 
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group4.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label >المعرض</label>
                             <gallery-template v-for="(item,index) in form.group4.gallery.length" @change-value="changeGallery($event,index)" :key="index"></gallery-template>
@@ -414,7 +429,10 @@
                         <span>المجموعة السادسة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group6.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>صفحة فيسبوك</label>
                             <input type="url" v-model="form.group6.face" class="form-control">
@@ -496,7 +514,10 @@
                         <span> إعدادات الصفحة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group7.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>اسم المستخدم</label>
                             <input type="text" v-model="form.group7.name" class="form-control">
@@ -561,13 +582,13 @@
                 form: new Form({
                     name: '',
                     logo: '',
-                    group1: {active:true,title: "", body: "", bg:"",css:"", size: "cover"},
-                    group2: {active:true, body: "", bg:"",css:"", size: "cover"},
-                    group3:{active:true,title:"",services:[],bg:"",css:"",size:"cover"},
-                    group4:{active:true,gallery:[],bg:"",css:"",size:"cover"},
-                    group5:{active:true,bg:"",css:"",size:"cover"},
-                    group6:{active:true,face:"",twitter:"",inestagram:"",bg:"",css:"",size:""},
-                    group7:{active:true,policy:"",terms:"",email:'',name:'',company:''},
+                    group1: {color:"#000000",active:true,title: "", body: "", bg:"",css:"", size: "cover"},
+                    group2: {color:"#000000",active:true, body: "", bg:"",css:"", size: "cover"},
+                    group3:{color:"#000000",active:true,title:"",services:[],bg:"",css:"",size:"cover"},
+                    group4:{color:"#000000",active:true,gallery:[],bg:"",css:"",size:"cover"},
+                    group5:{color:"#000000",active:true,bg:"",css:"",size:"cover"},
+                    group6:{color:"#000000",active:true,face:"",twitter:"",inestagram:"",bg:"",css:"",size:""},
+                    group7:{color:"#000000",active:true,policy:"",terms:"",email:'',name:'',company:''},
 
                 }),
             }

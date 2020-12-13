@@ -1,7 +1,6 @@
 
 @extends('site.home.layout_site')
 @php
-    $asset=asset('/home_page/assets/');
     $storage="/storage/";
 @endphp
 @section('content')
@@ -18,7 +17,7 @@
     <section id="contact" class="getintouch pt-1 pb-1" style="{{html_entity_decode($bg1)}}">
         <div class="container modern-form">
             <div class="text-center">
-                <h4 style="color: #212529;font-size: 45px;">إتصل بنا</h4>
+                <h4 style="color: {{$page->group5->color}};font-size: 45px;">إتصل بنا</h4>
             </div>
             <hr class="modern-form__hr">
             <div class="modern-form__form-container">
@@ -27,7 +26,7 @@
                     <div class="form-row">
                         <div class="col col-contact">
                             <div class="form-group modern-form__form-group--padding-r">
-                                <input class="form-control input input-tr" type="text" name="name" placeholder="الاسم">
+                                <input  class="form-control input input-tr" type="text" name="name" placeholder="الاسم">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>

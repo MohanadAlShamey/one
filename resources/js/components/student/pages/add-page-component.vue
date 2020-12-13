@@ -24,12 +24,16 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!--<div class="form-group">
-                            <label>لوغو</label>
-                            <input @change="changeImg($event,'logo')" type="file"
-                                   class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }">
-                            <span class="text-danger small" v-if="form.errors.has('img_video')">{{form.errors.get('img_video')}}</span>
-                        </div>-->
+                        <div class="form-group">
+                        <label>لوغو</label>
+                        <input @change="changeImg($event,'logo')" type="file"
+                               class="form-control" :class="{ 'is-invalid': form.errors.has('img_video') }">
+                        <span class="text-danger small" v-if="form.errors.has('img_video')">{{form.errors.get('img_video')}}</span>
+                    </div>
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group1.color" class="form-control">
+                        </div>
 
                         <div class="form-group">
                             <label>هيد لاين</label>
@@ -144,7 +148,10 @@
                         <span> المجموعة الثانية</span>
                        </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group2.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group2.title" class="form-control">
@@ -236,7 +243,10 @@
                     <span> المجموعة الثالثة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group3.color" class="form-control">
+                        </div>
                        <div class="form-group">
                            <label >المشاكل</label>
                            <input type="text" class="form-control my-1" v-for="(item,index) in form.group3.problems.length" v-model="form.group3.problems[index]">
@@ -330,7 +340,10 @@
 
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group4.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label >الحلول</label>
                             <input type="text" class="form-control my-1" v-for="(item,index) in form.group4.solutions.length" v-model="form.group4.solutions[index]">
@@ -427,7 +440,10 @@
                     <span>المموعة الخامسة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group5.color" class="form-control">
+                        </div>
                        <!-- <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group5.title" class="form-control">
@@ -515,7 +531,10 @@
                     <span>المجموعة السادسة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group6.color" class="form-control">
+                        </div>
                         <!--<div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group6.title" class="form-control">
@@ -606,7 +625,10 @@
                     <span> المجموعة السابعة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group7.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group7.title" class="form-control">
@@ -688,7 +710,10 @@
                         <span>المجموعة الثامنة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group8.color" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group8.title" class="form-control">
@@ -786,7 +811,10 @@
                     <span>المجموعة التاسعة</span>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label>لون الخط</label>
+                            <input type="color" v-model="form.group9.color" class="form-control">
+                        </div>
                        <!-- <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" v-model="form.group9.title" class="form-control">
@@ -972,17 +1000,17 @@
                 form: new Form({
                     name: '',
                     logo: '',
-                    group1: {active:false,title: "", video: "", img: "", sub_title: "", cta: "", btn: "", bg:"",css:"", size: "cover"},
-                    group2: {active:false,title: "", body: "", qnt: "", date: "", img: "", cta: "", btn: "", bg:"",css:"", size: "cover"},
-                    group3:{active:false,problems:[],img:"",story:"",img_story:"",bg_story:"",btn:"",bg:"",css:"",size:"cover"},
-                    group4:{active:false,solutions:[],img:"",title:"",body:"",cta:"",btn:"",bg:"",css:"",size:"cover"},
-                    group5:{active:false,title:"",price:"",benefists:[],img:"",bg:"",css:"",size:"cover"},
-                    group6:{active:false,title:"",price:"",dangers:[],img:"",footer:"",bg:"",css:"",size:""},
-                    group7:{active:false,title:"",sub_title:"",price:"",bg:"",css:"",size:""},
-                    group8:{active:false,title:"",benefists:[],img:"",footer:"",cta:"",btn:"",bg:"",css:"",size:""},
-                    group9:{active:false,title:"",sub_title:"",benefists:[],cta:"",btn:"",bg:"",css:"",size:""},
-                    group10:{active:false,questions:[{ask:"",answer:""}],cta:"",btn:"",bg:"",css:"",size:""},
-                    group11:{active:false,bg:"",css:"",size:""},
+                    group1: {color:'#000000',active:false,title: "", video: "", img: "", sub_title: "", cta: "", btn: "", bg:"",css:"", size: "cover"},
+                    group2: {color:'#000000',active:false,title: "", body: "", qnt: "", date: "", img: "", cta: "", btn: "", bg:"",css:"", size: "cover"},
+                    group3:{color:'#000000',active:false,problems:[],img:"",story:"",img_story:"",bg_story:"",btn:"",bg:"",css:"",size:"cover"},
+                    group4:{color:'#000000',active:false,solutions:[],img:"",title:"",body:"",cta:"",btn:"",bg:"",css:"",size:"cover"},
+                    group5:{color:'#000000',active:false,title:"",price:"",benefists:[],img:"",bg:"",css:"",size:"cover"},
+                    group6:{color:'#000000',active:false,title:"",price:"",dangers:[],img:"",footer:"",bg:"",css:"",size:""},
+                    group7:{color:'#000000',active:false,title:"",sub_title:"",price:"",bg:"",css:"",size:""},
+                    group8:{color:'#000000',active:false,title:"",benefists:[],img:"",footer:"",cta:"",btn:"",bg:"",css:"",size:""},
+                    group9:{color:'#000000',active:false,title:"",sub_title:"",benefists:[],cta:"",btn:"",bg:"",css:"",size:""},
+                    group10:{color:'#000000',active:false,questions:[{ask:"",answer:""}],cta:"",btn:"",bg:"",css:"",size:""},
+                    group11:{color:'#000000',active:false,bg:"",css:"",size:""},
                 }),
             }
         },

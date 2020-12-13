@@ -1,7 +1,6 @@
 
 @extends('site.home.layout_site')
 @php
-    $asset=asset('/home_page/assets/');
     $storage="/storage/";
 @endphp
 @section('content')
@@ -19,12 +18,12 @@
     <div class="container my-auto">
         <div class="row">
             <div class="col-lg-10 mx-auto">
-                <h1 class="text-uppercase"><strong>{{$page->group1->title}}</strong></h1>
+                <h1 class="text-uppercase" style="color:{{$page->group1->color}}"><strong>{{$page->group1->title}}</strong></h1>
                 <hr>
             </div>
         </div>
         <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5"> {{$page->group1->body}}</p>
+            <p class="text-faded mb-5" style="color:{{$page->group1->color}}"> {{$page->group1->body}}</p>
 
         </div>
     </div>
@@ -44,9 +43,9 @@
     <div class="container">
         <div class="row">
             <div class="col offset-lg-8 mx-auto text-center">
-                <h2 class="text-white section-heading">من نحن</h2>
+                <h2 class=" section-heading" style="color:{{$page->group2->color}}">من نحن</h2>
                 <hr class="light my-4">
-                <p class="text-faded mb-4"> {{$page->group2->body}}</p>
+                <p class="text-faded mb-4" style="color:{{$page->group2->color}}"> {{$page->group2->body}}</p>
             </div>
         </div>
     </div>
@@ -66,7 +65,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">خدماتنا</h2>
+                <h2 class="section-heading" style="color:{{$page->group3->color}}">خدماتنا</h2>
                 <hr class="my-4">
             </div>
         </div>
@@ -78,7 +77,7 @@
                 <div class="mx-auto service-box mt-5">
                     <img src="{{asset($storage.$service->img)}}" data-aos="zoom-in" data-aos-duration="200" data-aos-once="true"></i>
                     <h3 class="mb-3">{{$service->name}}</h3>
-                    <p class="text-muted mb-0">{{$service->description}}</p>
+                    <p class="text-muted mb-0" style="color:{{$page->group3->color}}">{{$service->description}}</p>
                 </div>
             </div>
                 @endforeach
